@@ -1,0 +1,21 @@
+import os
+import openai
+
+openai.api_type = "azure"
+openai.api_base = "https://ourcsworkshop.openai.azure.com/"     # Base Url of OPENAI service
+openai.api_version = "2023-07-01-preview"                       # OPENAI version
+openai.api_key = ""             # OPENAI API KEY
+
+message_text = [{"role":"system","content":"How to install python in windows OS ?"}] # Query format
+
+completion = openai.ChatCompletion.create(
+  engine="ourcsworkshop",
+  messages = message_text,
+  temperature=0.7,
+  max_tokens=800,
+  top_p=0.95,
+  frequency_penalty=0,
+  presence_penalty=0,
+  stop=None
+)
+print(completion)
